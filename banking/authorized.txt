@@ -1,0 +1,22 @@
+Routes
+
+- Admin role can do all
+Get All Customers       GET /customer
+Get Customer By ID      GET /customer/{customer_id}
+Create new account      POST /customer/{customer_id}/account
+Make a transaction      POST /customer/{customer_id}/account/{account_id}
+
+- User role can do
+Get Customer By ID      GET /customer/{customer_id}
+Make a transaction      POST /customer/{customer_id}/account/{account_id}
+
+{
+    "admin": ["GetAllCustomers", "GetCustomer", "NewAccount",  "NewTransaction"],
+    "user": ["GetCustomer", "NewAccount"],
+}
+
+VERIFICATION
+
+1. Validity of the token (includes the expiry the signature verifications)
+2. Verify if the role has access to the resource
+3. need to verify if the resource being access is for the same user

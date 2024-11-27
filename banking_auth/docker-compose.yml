@@ -1,0 +1,23 @@
+
+
+services:
+
+
+  banking_auth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8181"
+    environment:
+      - SERVER_ADDRESS=0.0.0.0
+      - SERVER_PORT=8181
+      - MONGODB_URI=mongodb://host.docker.internal:27017
+
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
+
